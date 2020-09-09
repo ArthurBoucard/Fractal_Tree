@@ -16,16 +16,26 @@ def tree(len, mem, t):
         t.right(25)
         t.backward(len)
 
-def function():
-    len = 100
+def function(len):
     t = turtle.Turtle()
     screen = turtle.Screen()
+    screen.setup(len * 10, len * 6)
     t.speed(1000000)
     t.left(90)
     t.up()
-    t.backward(300)
+    t.backward(len * 3)
     t.down()
     tree(len, len, t)
     screen.exitonclick()
 
-function()
+def val_input():
+    len = input("What size for the fractal tree ? ")
+    try :
+        int(len)
+    except ValueError :
+        print ("Wrong size input")
+        exit(84)
+    len = int(len)
+    function(len)
+
+val_input()
