@@ -6,26 +6,30 @@
 
 import turtle
 
-def tree(len, mem, angle, t):
-    if len > mem/10:
-        t.forward(len)
-        t.right(angle)
-        tree(len - 10, mem, angle, t)
-        t.left(angle * 2)
-        tree(len - 10, mem, angle, t)
-        t.right(angle)
-        t.backward(len)
+def tree(tab_val, t):
+    if tab_val[0] > tab_val[1] / 10:
+        t.forward(tab_val[0])
+        t.right(tab_val[2])
+        tab_val[0] -= 10
+        tree(tab_val, t)
+        tab_val[0] += 10
+        t.left(tab_val[2] * 2)
+        tab_val[0] -= 10
+        tree(tab_val, t)
+        tab_val[0] += 10
+        t.right(tab_val[2])
+        t.backward(tab_val[0])
 
-def function(len, angle):
+def function(tab_val):
     t = turtle.Turtle()
     screen = turtle.Screen()
-    screen.setup(len * 10, len * 6)
+    screen.setup(tab_val[0] * 10, tab_val[0] * 6)
     t.speed(1000000)
     t.left(90)
     t.up()
-    t.backward(len * 3)
+    t.backward(tab_val[0] * 3)
     t.down()
-    tree(len, len, angle, t)
+    tree(tab_val, t)
     screen.exitonclick()
 
 def val_input():
@@ -37,8 +41,7 @@ def val_input():
     except ValueError :
         print ("Wrong size input")
         exit(84)
-    len = int(len)
-    angle = int(angle)
-    function(len, angle)
+    tab_val = [int(len), int(len), int(angle)]
+    function(tab_val)
 
 val_input()
