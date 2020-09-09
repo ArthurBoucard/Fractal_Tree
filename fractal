@@ -6,24 +6,26 @@
 
 import turtle
 
-def tree(len, t):
-    if len > 2:
+def tree(len, mem, t):
+    if len > mem/10:
         t.forward(len)
         t.right(25)
-        tree(len / 2, t)
+        tree(len - 10, mem, t)
         t.left(50)
-        tree(len / 2, t)
+        tree(len - 10, mem, t)
         t.right(25)
         t.backward(len)
 
 def function():
-   t = turtle.Turtle()
-   data = turtle.Screen()
-   t.left(90)
-   t.up()
-   t.backward(100)
-   t.down()
-   tree(100, t)
-   data.exitonclick()
+    len = 100
+    t = turtle.Turtle()
+    screen = turtle.Screen()
+    t.speed(1000000)
+    t.left(90)
+    t.up()
+    t.backward(300)
+    t.down()
+    tree(len, len, t)
+    screen.exitonclick()
 
 function()
