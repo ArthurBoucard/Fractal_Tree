@@ -6,17 +6,17 @@
 
 import turtle
 
-def tree(len, mem, t):
+def tree(len, mem, angle, t):
     if len > mem/10:
         t.forward(len)
-        t.right(25)
-        tree(len - 10, mem, t)
-        t.left(50)
-        tree(len - 10, mem, t)
-        t.right(25)
+        t.right(angle)
+        tree(len - 10, mem, angle, t)
+        t.left(angle * 2)
+        tree(len - 10, mem, angle, t)
+        t.right(angle)
         t.backward(len)
 
-def function(len):
+def function(len, angle):
     t = turtle.Turtle()
     screen = turtle.Screen()
     screen.setup(len * 10, len * 6)
@@ -25,17 +25,20 @@ def function(len):
     t.up()
     t.backward(len * 3)
     t.down()
-    tree(len, len, t)
+    tree(len, len, angle, t)
     screen.exitonclick()
 
 def val_input():
     len = input("What size for the fractal tree ? ")
+    angle = input("What angle for the fractal tree ? ")
     try :
         int(len)
+        int(angle)
     except ValueError :
         print ("Wrong size input")
         exit(84)
     len = int(len)
-    function(len)
+    angle = int(angle)
+    function(len, angle)
 
 val_input()
