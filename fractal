@@ -25,6 +25,7 @@ def function():
 
     t = turtle.Turtle()
     screen = turtle.Screen()
+    screen.title("Fractal Tree Maker")
     tab_val[0] = screen.numinput("Size", "Your size for the fractal tree :", 100, minval=0, maxval=1000000)
     tab_val[1] = tab_val[0]
     tab_val[2] = screen.numinput("Angle", "Your angle for the fractal tree :", 20, minval=0, maxval=1000000)
@@ -35,6 +36,13 @@ def function():
     t.backward(tab_val[0] * 3)
     t.down()
     tree(tab_val, t)
+    t.up()
+    t.left(70)
+    t.forward(tab_val[1] * 3)
+    t.write("QUIT", True, align="center", font=("Arial", 16, "normal"))
+    t.right(160)
+    t.forward(tab_val[1] * 5)
+    t.write("AGAIN", True, align="left", font=("Arial", 16, "normal"))
     screen.exitonclick()
 
 function()
