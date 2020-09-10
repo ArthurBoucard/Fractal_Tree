@@ -20,9 +20,14 @@ def tree(tab_val, t):
         t.right(tab_val[2])
         t.backward(tab_val[0])
 
-def function(tab_val):
+def function():
+    tab_val = [0, 0, 0]
+
     t = turtle.Turtle()
     screen = turtle.Screen()
+    tab_val[0] = screen.numinput("Size", "Your size for the fractal tree :", 100, minval=0, maxval=1000000)
+    tab_val[1] = tab_val[0]
+    tab_val[2] = screen.numinput("Angle", "Your angle for the fractal tree :", 20, minval=0, maxval=1000000)
     screen.setup(tab_val[0] * 10, tab_val[0] * 6)
     t.speed(1000000)
     t.left(90)
@@ -32,16 +37,4 @@ def function(tab_val):
     tree(tab_val, t)
     screen.exitonclick()
 
-def val_input():
-    len = input("What size for the fractal tree ? ")
-    angle = input("What angle for the fractal tree ? ")
-    try :
-        int(len)
-        int(angle)
-    except ValueError :
-        print ("Wrong size input")
-        exit(84)
-    tab_val = [int(len), int(len), int(angle)]
-    function(tab_val)
-
-val_input()
+function()
