@@ -6,6 +6,20 @@
 
 import turtle
 
+def finish(tab_val, t):
+    def mouse_coord(x, y):
+        if (x > 0):
+            t.clear()
+            t.hideturtle()
+            function()
+            exit(0)
+        else:
+            exit(0)
+
+    turtle.onscreenclick(mouse_coord)
+
+    turtle.mainloop()
+
 def tree(tab_val, t):
     if tab_val[0] > tab_val[1] / 10:
         t.forward(tab_val[0])
@@ -22,15 +36,15 @@ def tree(tab_val, t):
 
 def function():
     tab_val = [0, 0, 0]
-
     t = turtle.Turtle()
     screen = turtle.Screen()
+
     screen.title("Fractal Tree Maker")
     tab_val[0] = screen.numinput("Size", "Your size for the fractal tree :", 100, minval=0, maxval=1000000)
     tab_val[1] = tab_val[0]
     tab_val[2] = screen.numinput("Angle", "Your angle for the fractal tree :", 20, minval=0, maxval=1000000)
     screen.setup(tab_val[0] * 10, tab_val[0] * 6)
-    t.speed(1000000)
+    t.speed(0)
     t.left(90)
     t.up()
     t.backward(tab_val[0] * 3)
@@ -43,6 +57,6 @@ def function():
     t.right(160)
     t.forward(tab_val[1] * 5)
     t.write("AGAIN", True, align="left", font=("Arial", 16, "normal"))
-    screen.exitonclick()
+    finish(tab_val, t)
 
 function()
