@@ -1,4 +1,4 @@
-# Fractal Tree Maker :gear:
+# Fractal Tree Maker
 ## :star2: Personal project :
 
 Fractal Tree maker made with python using turtle.
